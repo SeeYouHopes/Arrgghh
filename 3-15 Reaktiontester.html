@@ -1,0 +1,109 @@
+<html>
+
+    <head>
+
+        <title>Javascript</title>
+
+        <style type="text/css">
+
+            #object {
+
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                display: none;
+                position: relative;
+                
+
+            }
+
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h1>Test your reaction!</h1> 
+        <p>This is my first real project. Help i got from Udemy. I hope u can help me on the way to perfectly scripting.</p>
+        <p>LG SeeYouHopes</p> 
+        <p id="zeit">Deine Zeit: <span id="dauer"> </span> </p>
+
+        <div id="object">
+
+        </div>
+
+        <script type="text/javascript">
+
+            function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+            }
+
+            function setRandomColor() {
+            $("#colorpad").css("background-color", getRandomColor());
+            }
+
+
+            function form() {
+
+                if(Math.random() > 0.5) {
+
+                    document.getElementById("object").style.borderRadius ="50%";
+
+                } else {
+
+                    document.getElementById("object").style.borderRadius = "0";
+
+                }
+
+            }
+
+            var start = new Date();
+
+            appear();
+
+            function erscheinen(){
+                var wide = Math.round(Math.random() * (400 - 100)) + 100;
+                var position = Math.random()*400;
+                var position2 = Math.random()*200
+                document.getElementById("object").style.top = position + "px";                 
+                document.getElementById("object").style.left = position2 + "px";
+                document.getElementById("object").style.height= wide + "px";
+                document.getElementById("object").style.width = wide + "px";             
+                document.getElementById("object").style.display = "block";
+                document.getElementById("object").style.backgroundColor = getRandomColor();
+                form();
+                start = new Date();
+
+            }
+
+            function appear(){
+
+                setTimeout(erscheinen,Math.random()*2000)
+
+            }
+
+            document.getElementById("object").onclick = function() {
+
+                document.getElementById("object").style.display = "none";
+
+                var ende = new Date();
+
+                var zeit = (ende-start)/1000
+
+                document.getElementById("dauer").innerHTML = zeit + "s"
+
+                appear();
+            }
+
+        </script>
+
+    </body>
+
+</html>
